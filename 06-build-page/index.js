@@ -1,5 +1,5 @@
 const { join, extname } = require('path')
-const { readdir, mkdir, rmdir, copyFile } = require('fs/promises')
+const { readdir, mkdir, copyFile, rm } = require('fs/promises')
 const { createWriteStream, createReadStream } = require('fs')
 const { stdout } = require('process')
 
@@ -7,7 +7,7 @@ const dist = join(__dirname, 'project-dist')
 const reg = /[{]+[a-zA-Z0-9]+[}]+/g
 
 const clearFolder = async (nameFolderClear) => {
-  await rmdir(nameFolderClear, { recursive: true })
+  await rm(nameFolderClear, { recursive: true, force: true })
   await mkdir(nameFolderClear, { recursive: true })
 }
 

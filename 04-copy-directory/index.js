@@ -1,8 +1,8 @@
 const { join } = require('path')
-const { readdir, copyFile, mkdir, rmdir } = require('fs/promises')
+const { readdir, copyFile, mkdir, rm } = require('fs/promises')
 
 const clearFolder = async (nameFolderClear) => {
-  await rmdir(nameFolderClear, { recursive: true })
+  await rm(nameFolderClear, { recursive: true, force: true })
   await mkdir(nameFolderClear, { recursive: true })
 }
 
